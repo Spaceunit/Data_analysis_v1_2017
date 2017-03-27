@@ -43,6 +43,7 @@ class GCSV:
         }
         self.file_path = "file.csv"
         self.epsilon = 0.001
+        self.dataset = {}
         self.makedefault()
 
 
@@ -76,8 +77,9 @@ class GCSV:
     def makedefault(self):
         self.file_path = "file.csv"
 
-    def importparam(self, accuracy):
+    def importparam(self, accuracy, dataset):
         self.accuracy = accuracy
+        self.dataset = dataset
 
     def setaccuracy(self):
         task = 0

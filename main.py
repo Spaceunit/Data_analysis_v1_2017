@@ -5,6 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import mlab
 
+import get_csv
+
 class Work:
     def __init__(self):
         self.accuracy = 3
@@ -19,7 +21,8 @@ class Work:
                 "show slist": 6,
                 "show scount": 7,
                 "acc": 8,
-                "mk": 9
+                "mk": 9,
+                "gcsv": 10
             },
             "description": {
                 "none": "do nothing",
@@ -31,10 +34,11 @@ class Work:
                 "show slist": "show raw data",
                 "show scount": "show something",
                 "acc": "set accuracy",
-                "mk": "set default raw data"
+                "mk": "set default raw data",
+                "gcsv": "get information from data-set"
             }
         }
-        pass
+        self.dataset = {}
 
     def enterCommand(self):
         command = "0"
@@ -87,7 +91,8 @@ class Work:
             elif (task == 9):
                 self.makedafault()
             elif (task == 10):
-                pass
+                Task = get_csv.GCSV()
+
         pass
 
     def inputnewdata(self):
