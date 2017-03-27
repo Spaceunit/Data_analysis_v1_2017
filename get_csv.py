@@ -75,7 +75,9 @@ class GCSV:
         self.showCommands()
 
     def makedefault(self):
-        self.file_path = "file.csv"
+        #self.file_path = "file.csv"
+        self.file_path = "src_csv/example_from_google/GS_Election_Poll_20161108.csv"
+        #324730000
 
     def importparam(self, accuracy, dataset):
         self.accuracy = accuracy
@@ -125,9 +127,10 @@ class GCSV:
                 self.resolve()
             elif task == 11:
                 self.printresult()
-
             elif task == 12:
                 self.printresult_g()
+            elif task == 13:
+                self.dataset = self.getcsv()
         pass
 
     def print_raw_data(self):
@@ -143,7 +146,15 @@ class GCSV:
         print("Result:")
 
     def getcsv(self):
+        self.makedefault()
+        reader = {}
+        with open(self.file_path) as csvfile:
+            reader = csv.DictReader(csvfile)
+        return reader
+
+    def getcsv0(self):
+        self.makedefault()
         with open(self.file_path) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                print(row['first_name'], row['last_name'])
+                print(row['Geography'], row['Question #4 Answer'])

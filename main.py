@@ -92,6 +92,8 @@ class Work:
                 self.makedafault()
             elif (task == 10):
                 Task = get_csv.GCSV()
+                Task.importparam(self.accuracy, self.dataset)
+                Task.dostaff()
 
         pass
 
