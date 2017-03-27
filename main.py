@@ -42,18 +42,22 @@ class Work:
         command = "0"
         print('')
         print("Enter command (help for Q&A)")
-        while (command not in self.commands):
+        while (command not in self.commands["commands"]):
             command = input("->")
-            if (command not in self.commands):
+            if (command not in self.commands["commands"]):
                 print("There is no such command")
             else:
-                return self.commands[command]
+                return self.commands["commands"][command]
 
     def showCommands(self):
         print('')
         print("Commands...")
-        for item in self.commands:
-            print(str(item) + ": " + str(self.commands[item]))
+        print("---")
+        for item in self.commands["commands"]:
+            print(str(item) + ":")
+            print("Number: " + str(self.commands["commands"][item]))
+            print("Description: " + str(self.commands["description"][item]))
+            print("---")
 
     def showHelp(self):
         print('')
