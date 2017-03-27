@@ -11,23 +11,30 @@ class Work:
         self.a = matrix.Matrix([[0]],"Initial matrix")
         self.accuracy = 3
         self.commands = {
-            "none": 0,
-            "exit": 1,
-            "test": 2,
-            "clear": 3,
-            "help": 4,
-            "new": 5,
-            "show slist": 6,
-            "show scount": 7,
-            "acc": 8,
-            "mk": 9,
-            "jap": 10,
-            "gss": 11,
-            "dm": 12,
-            "nm": 13,
-            "sm": 14,
-            "bsm": 15
-
+            "commands": {
+                "none": 0,
+                "exit": 1,
+                "test": 2,
+                "clear": 3,
+                "help": 4,
+                "new": 5,
+                "show slist": 6,
+                "show scount": 7,
+                "acc": 8,
+                "mk": 9
+            },
+            "description": {
+                "none": "do nothing",
+                "exit": "exit from module",
+                "test": "do test stuff",
+                "clear": "clear something",
+                "help": "display helpfull information",
+                "new": "enter new raw data",
+                "show slist": "show raw data",
+                "show scount": "show something",
+                "acc": "set accuracy",
+                "mk": "set default raw data"
+            }
         }
         pass
 
