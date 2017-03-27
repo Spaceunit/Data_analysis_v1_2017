@@ -141,3 +141,9 @@ class GCSV:
 
     def printresult(self):
         print("Result:")
+
+    def getcsv(self):
+        with open(self.file_path) as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                print(row['first_name'], row['last_name'])
