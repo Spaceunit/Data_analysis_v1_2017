@@ -21,7 +21,8 @@ class GCSV:
                 "mk": 9,
                 "start": 10,
                 "show result": 11,
-                "image 1": 12
+                "image 1": 12,
+                "set path": 13
             },
             "description": {
                 "none": "do nothing",
@@ -36,7 +37,8 @@ class GCSV:
                 "mk": "set default raw data",
                 "start": "start calculation process",
                 "show result": "show result",
-                "image 1": "show visualization"
+                "image 1": "show visualization",
+                "set path": "set path of the file"
             }
         }
         self.file_path = "file.csv"

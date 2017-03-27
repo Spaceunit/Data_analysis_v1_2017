@@ -1,6 +1,5 @@
 import openpyxl
 import matrix
-import excel_transfer
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +7,6 @@ from matplotlib import mlab
 
 class Work:
     def __init__(self):
-        self.a = matrix.Matrix([[0]],"Initial matrix")
         self.accuracy = 3
         self.commands = {
             "commands": {
@@ -82,7 +80,6 @@ class Work:
                 self.inputnewdata()
                 pass
             elif (task == 6):
-                self.a.showmatrix()
                 pass
             elif (task == 8):
                 self.setaccuracy()
@@ -94,47 +91,7 @@ class Work:
         pass
 
     def inputnewdata(self):
-        task = 0
-        self.a = matrix.Matrix([], "Initial matrix")
-        while (task != 1):
-            print('')
-            print("Enter matrix dimension:")
-            while (task != 1):
-                num = int(input("-> "))
-                print("Input is correct? (enter - yes/n - no)")
-                command = input("-> ")
-                if (command != "n"):
-                    self.a = self.inputmatrix(num)
-                    task = 1
-            task = 0
-            self.a.rename("Initial matrix")
-            self.a.showmatrix()
-            print("Matrix is correct? (enter - yes/n - no)")
-            command = input("-> ")
-            if (command != "n"):
-                task = 1
-
-    def inputmatrix(self, num):
-        print('')
-        i = 0
-        task = 0
-        nm = matrix.Matrix([], "new matrix")
-        while (i < num):
-            print("Enter matrix row (use spaces)")
-            print("Row ", i + 1)
-            while (task != 1):
-                row = list(map(float, input("-> ").split()))
-                print("Input is correct? (enter - yes/n - no)")
-                command = input("-> ")
-                if (command != "n" and len(row) == num):
-                    task = 1
-                    nm.appendnrow(row)
-                elif (len(row) != num):
-                    print('')
-                    print("Incorrect input: count of items.")
-            task = 0
-            i += 1
-        return nm
+        pass
 
     def setaccuracy(self):
         task = 0
@@ -149,8 +106,7 @@ class Work:
         pass
 
     def makedafault(self):
-        self.exeldata = excel_transfer.Excel()
-        self.a = self.exeldata.transferlist('square')
+        #self.exeldata = excel_transfer.Excel()
         self.accuracy = 3
 
 
