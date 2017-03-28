@@ -149,10 +149,21 @@ class GCSV:
 
     def getcsv(self):
         self.makedefault()
+        result = []
         reader = {}
         with open(self.file_path) as csvfile:
             reader = csv.DictReader(csvfile)
-        return reader
+            for row in reader:
+                result.append({"Date": row["Date"],
+                               "Geography": row["Geography"],
+                               "Initial Weight": row["Initial Weight"],
+                              "Weight": row["Weight"],
+                              "Question #1 Answer": row["Question #1 Answer"],
+                              "Question #2 Answer": row["Question #2 Answer"],
+                              "Question #3 Answer": row["Question #3 Answer"],
+                              "Question #4 Answer": row["Question #4 Answer"]
+                })
+        return result
 
     def getcsv0(self):
         self.makedefault()

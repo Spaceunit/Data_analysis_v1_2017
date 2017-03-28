@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib import mlab
 
 import get_csv
+import eposs
 
 class Work:
     def __init__(self):
@@ -22,7 +23,8 @@ class Work:
                 "show scount": 7,
                 "acc": 8,
                 "mk": 9,
-                "gcsv": 10
+                "gcsv": 10,
+                "eposs": 11
             },
             "description": {
                 "none": "do nothing",
@@ -35,7 +37,8 @@ class Work:
                 "show scount": "show something",
                 "acc": "set accuracy",
                 "mk": "set default raw data",
-                "gcsv": "get information from data-set"
+                "gcsv": "get information from data-set",
+                "eposs": "Estimation of parameters of statistical sampling"
             }
         }
         self.dataset = {}
@@ -95,6 +98,11 @@ class Work:
                 Task.importparam(self.accuracy, self.dataset)
                 Task.dostaff()
                 self.dataset = Task.dataset
+            elif (task == 11):
+                Task = eposs.EPOSS()
+                Task.importparam(self.accuracy, self.dataset)
+                Task.dostaff()
+                #self.dataset = Task.dataset
 
         pass
 

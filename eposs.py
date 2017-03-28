@@ -47,16 +47,29 @@ class EPOSS:
         self.epsilon = 0.001
         self.dataset = {}
         self.makedefault()
+        self.raw_data = {
+            "csv" : {
+                "sample_size": 0,
+                # This data from GS_Election_Poll_20161108.pdf
+                "initial_sample": 34520,
+                "prompted": 126555,
+                "population": 324730000,
+                "response": 27.28
+            }
+        }
         self.result = {
-            "Y": 0.0,
-            "Ys": 0.0,
-            "DY^2": 0.0,
-            "^Y": 0.0,
-            "^Ys": 0.0,
-            "S^2": 0.0,
-            "D(^Ys)": 0.0,
-            "D(^Y)": 0.0,
-            "lol": 0.0
+            "population": {
+                "Y": 0.0,
+                "Ys": 0.0,
+                "DY^2": 0.0
+            },
+            "sample": {
+                "^Y": 0.0,
+                "^Ys": 0.0,
+                "S^2": 0.0,
+                "D(^Ys)": 0.0,
+                "D(^Y)": 0.0
+            }
         }
 
 
@@ -149,16 +162,51 @@ class EPOSS:
         pass
 
     def resolve(self):
-        pass
+        self.makedefault()
+        # Date,Geography,Initial Weight,Weight,Question #1 Answer,Question #2 Answer,Question #3 Answer,Question #4 Answer
+        likely = []
+        # self.raw_data["likely"] = []
+        for row in self.dataset:
+            if "100%" in row["Question #1 Answer"]:
+                likely.append(1.0)
+            elif "Extremely" in row["Question #1 Answer"]:
+                likely.append(0.75)
+            elif "Somewhat" in row["Question #1 Answer"]:
+                likely.append(0.5)
+            elif "Not very" in row["Question #1 Answer"]:
+                likely.append(0.25)
+        for p in likely:
+            print(p)
+
+        N = self.raw_data["csv"]["population"]
+        self.result["population"]["Y"] = sum(likely)
+        self.result["population"]["Ys"] = self.result["population"]["Y"] / float(self.raw_data["csv"]["sample_size"])
+        self.result["population"]["DY^2"] = sum([math.pow(likely[i] - self.result["population"]["Ys"], 2)
+                                   for i in range(len(likely))]) / (float(N) - 1.0)
+
+        # part B
+        self.result["sample"]["^Ys"] = sum(likely) / float(len(likely))
+        self.result["sample"]["^Y"] = float(N) * self.result["sample"]["^Ys"]
+        self.result["sample"]["S^2"] = sum([math.pow(likely[i] - self.result["sample"]["^Ys"], 2)
+                                   for i in range(len(likely))]) / (float(len(likely)) - 1.0)
+
+        self.printresult()
 
     def printresult_g(self):
         pass
 
     def printresult(self):
+        print('')
         print("Result:")
+        print('')
+        for item in self.result:
+            print("For " + str(item))
+            for subitem in self.result[item]:
+                print(str(subitem) + ":" + str(self.result[item][subitem]))
+                print("---")
 
     def getcsv(self):
         gcsv = get_csv.GCSV()
         gcsv.file_path = self.file_path
         self.dataset = gcsv.getcsv()
-        pass
+        self.raw_data["csv"]["sample_size"] = len(self.dataset)
