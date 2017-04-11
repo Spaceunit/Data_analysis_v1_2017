@@ -78,7 +78,7 @@ class GCSV:
         #self.file_path = "file.csv"
         #It had download from
         #https://doc-50-58-drive-data-export.googleusercontent.com/download/ate866dkcquebegkb64jf1fj6ukv21dr/hkv8tv4k1stup04osgnm6al5a7pb48t6/1489444100000/4c45aaa8-2bff-425e-b9b8-788610ef415e/102797190718007119523/ADt3v-N0yZrt-y6E64-dQEqIxb7kEWR03Pjx0cZ9eW6fHYNlTrjJxrBIRz7ybsXCBCpr_LJtHcB86-wFmBTqzUfH0tmsWk81YyfWM7VTwYYiBi4GQvY3bxFmohSF0CglTYtHofwcS3ruohIguHQTLKT2q8YuYMNkiJK_Vwxk7c4S6Z74tjzS__WmAnm3GJmVyHHR56SgfLtWT4arVhgR7DSO_VgjhgvTJoztmFta5z_SYjXKG7yxB-GBFY3WhR64_zp5CODqAc5PUmYJhVOLF43PPJRJaAKxAg_1pZc1H81DRx1vK9lnhJR5aKmtRkXuwuNRLt8p3R5NwIZSZ0sanosLedzLNC4rWQbVzq0GaxBM4NdCPRV2_Tk69mxHE_pC-BhlKP8U25qSJffQHrR8sdaNvrLpP8X4jA==?authuser=0&nonce=39do4bs7ish28&user=102797190718007119523&hash=2l3e4d63qkkitu4l7glfe0el470l6ecr
-        self.file_path = "src_csv/example_from_google/GS_Election_Poll_20161108.csv"
+        self.file_path = "src_csv/example_from_google/GCS_Election_Poll_20161015.csv"
         #324730000
 
     def importparam(self, accuracy, dataset):

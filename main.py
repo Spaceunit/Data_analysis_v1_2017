@@ -102,7 +102,7 @@ class Work:
                 Task = eposs.EPOSS()
                 Task.importparam(self.accuracy, self.dataset)
                 Task.dostaff()
-                #self.dataset = Task.dataset
+                self.dataset = Task.dataset
 
         pass
 
